@@ -81,6 +81,7 @@ def check(public_key, ID, mes, sign):
 if(check(public_key, ID, mes, sign)):
     print('验证通过')
 ```
+## 打印结果展示
 对最终结果进行打印，最终结果如下： 
 ![图片](https://user-images.githubusercontent.com/105708747/180604507-7a31835a-c403-4764-afcd-a05456b4776f.png)
 ## 按照RFC6979生成随机数k函数具体实现
