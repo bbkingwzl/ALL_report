@@ -1,5 +1,11 @@
 # ECMH
-Implement the above ECMH scheme  
+Implement the above ECMH scheme  本次实验为笔者独自完成。引用部分在文中有所展示。
+## 代码说明以及注意事项
+除mathfunc导入外，还需要导入gmssl库，在运行前需要先pip install gmssl
+在运行时直接下载py文件运行ECMH即可。
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-25：  
+![图片](https://user-images.githubusercontent.com/105708747/180753324-00f0a5b5-de2c-43dd-a8a9-edd2d648689b.png)
+
 ## ECMH实现介绍
 导入所需库后（mathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,而后设置椭圆曲线相关参数a、b。
 ```python
@@ -44,6 +50,7 @@ if __name__ == '__main__':
     print("hash({b'lzwgnikbb'}) = ", set_hash3)
     print("hash({b'bbkingwzl', b'lzwgnikbb'}) = ", set_hash2)
 ```
+## 打印结果展示
 打印结果如下所示：
 ![图片](https://user-images.githubusercontent.com/105708747/180641605-fbe4e82e-9ffe-4615-836a-8774f839c06d.png)
 ## mathfunc中的函数介绍
