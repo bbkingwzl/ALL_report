@@ -1,77 +1,10 @@
 # sm2_rfc6979
-impl sm2 with rfc6979
-## RFC6979生成随机数k原理
-首先分析RFC6979生成随机数k的原理，我们定义:
-```python
-    HMAC_K(V)
-```
-使用密钥(key)K对数据V进行HMAC算法。
-给定输入消息m，应用以下过程：
+impl sm2 with rfc6979 本次实验为笔者独自完成。引用部分在文中有所展示。
+## 运行解释以及注意事项
+除mathfunc导入外，还需要导入bitcoin库，在运行前需要先pip install bitcoin 在运行时直接下载py文件运行sm2即可。 
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-23：
+![图片](https://user-images.githubusercontent.com/105708747/180766847-34ec44b9-5d00-4a16-852a-a500b4fc5c58.png)
 
-1.通过哈希函数H处理m，产生：
-```python
-h1 = H（m）
-```
-2. V（以比特）的长度等于8 * ceil（hlen / 8）。例如，如果H是SHA-256，则V被设置为值为1的32个八位字节的序列。
-```python
-V = 0x01 0x01 0x01 ... 0x01
-```
-3.K的长度（以比特）等于8 * ceil（hlen / 8）。
-```python
-K = 0x00 0x00 0x00 ... 0x00
-```
-4.‘||’表示连接。x是私钥。
-```python
-K = HMAC_K（V || 0x00 || int2octets（x）|| bits2octets（h1））
-```
-5. 对V进行HMAC处理
-```python
-V = HMAC_K（V）
-```
-6.按照规则已经V对K进行处理
-```python
-K = HMAC_K（V || 0x01 || int2octets（x）|| bits2octets（h1））
-```
-7.再对V进行一次处理
-```python
-V = HMAC_K（V）
-```
-8执行以下流程，直到找到适当的值k：  
-8.1将T设置为空序列。 T的长度（以比特为单位）表示为tlen, 因此tlen = 0。
-```python
-V = HMAC_K（V）
-T = T || V
-k = bits2int（T）
-```
-8.2如果k的值在[1，q-1]范围内，那么k的生成就完了。否则，计算：
-```python
-K = HMAC_K（V || 0x00）
-V = HMAC_K（V）
-```
-并循环（尝试生成一个新的T，等等）。
-## 按照RFC6979生成随机数k函数具体实现
-bin_sha256()返回输入数据的hash256的结果，不过是python的byte格式的（也就是字符串在计算机的真正样子）。比如这里的
-```python
-i = 1
-result_k = deterministic_generate_k(bin_sha256(str(i)), encode(i, 256, 32))
-print result_k
-```
-最终定义函数deterministic_generate_k生成随机数k
-```python
-def deterministic_generate_k(msghash, priv):
-    v = b'\x01' * 32
-    k = b'\x00' * 32
-
-    priv = encode_privkey(priv, 'bin')
-
-    msghash = encode(hash_to_int(msghash), 256, 32)
-
-    k = hmac.new(k, v+b'\x00'+priv+msghash, hashlib.sha256).digest()
-    v = hmac.new(k, v, hashlib.sha256).digest()
-    k = hmac.new(k, v+b'\x01'+priv+msghash, hashlib.sha256).digest()
-    v = hmac.new(k, v, hashlib.sha256).digest()
-    return decode(hmac.new(k, v, hashlib.sha256).digest(), 256)
-```
 ## 根据RFC6979实现SM2
 导入所需库后（mathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,并利用mathfunc中的生成密钥函数进行密钥的生成工作。
 ```python
@@ -150,6 +83,28 @@ if(check(public_key, ID, mes, sign)):
 ```
 对最终结果进行打印，最终结果如下： 
 ![图片](https://user-images.githubusercontent.com/105708747/180604507-7a31835a-c403-4764-afcd-a05456b4776f.png)
+## 按照RFC6979生成随机数k函数具体实现
+bin_sha256()返回输入数据的hash256的结果，不过是python的byte格式的（也就是字符串在计算机的真正样子）。比如这里的
+```python
+i = 1
+result_k = deterministic_generate_k(bin_sha256(str(i)), encode(i, 256, 32))
+print result_k
+```
+最终定义函数deterministic_generate_k生成随机数k,这里引用https://blog.csdn.net/pony_maggie/article/details/77622149
+def deterministic_generate_k(msghash, priv):
+    v = b'\x01' * 32
+    k = b'\x00' * 32
+
+    priv = encode_privkey(priv, 'bin')
+
+    msghash = encode(hash_to_int(msghash), 256, 32)
+
+    k = hmac.new(k, v+b'\x00'+priv+msghash, hashlib.sha256).digest()
+    v = hmac.new(k, v, hashlib.sha256).digest()
+    k = hmac.new(k, v+b'\x01'+priv+msghash, hashlib.sha256).digest()
+    v = hmac.new(k, v, hashlib.sha256).digest()
+    return decode(hmac.new(k, v, hashlib.sha256).digest(), 256)
+```
 ## mathfunc中函数介绍
 下面介绍mathfunc.py中的函数。首先设置有限域的阶以及椭圆曲线的阶以及基本点，以及椭圆曲线方程的参数a=0，b=7，则函数方程为y^2=x^3+7
 ```python
@@ -165,7 +120,7 @@ basic_point = (X, Y)
 A = 0
 B = 7
 ```
-再构造SM2所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余
+再构造SM2所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余，这里引用https://blog.csdn.net/qq_51999772/article/details/122642868
 ```python
 '''利用扩展欧几里得算法求逆'''
 def cal_inverse(a, b):
