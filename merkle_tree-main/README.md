@@ -1,4 +1,10 @@
 # merkle_tree
+本次实验以代码形式具体实现了实现简单的merkle tree，本次实验为笔者独自完成。引用部分在文中有所展示。
+## 运行解释以及注意事项
+运行代码时直接下载py文件，将其中所上传的文件按需导入运行main即可。
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-17： 
+![图片](https://user-images.githubusercontent.com/105708747/180764115-0556dfba-f706-4975-968d-e69cdef21e7d.png)
+## 具体代码解释
 使用list变量存储整颗merkle tree，开始时的输入即为最底部的叶子结点，随后逐步向上推进。list中的最后一个元素即为根节点root。其中添加了verify功能，可以验证局部merkletree的正确性，也可以验证整颗merkletree的正确性。  
 本次实验通过调用hashlib库使用sha256函数对叶子结点进行哈希。在主函数中，test即为所有的叶子结点，通过调用所写函数构造merkle tree，若最终验证通过则说明正确性。下面将对具体函数进行介绍。
 ```python
@@ -15,7 +21,7 @@ def sha256(value):
 
 
 def main():
-  test = ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']
+  file_text = ['au', 'th', 'or', 'is', 'bb', 'ki','ng','wz']
   tree = set_merkle_tree(test, sha256)
   root = cap_root(test, sha256)
   proof = set_proof_2_verify(tree, test[2])
@@ -155,3 +161,5 @@ def verify(arr, func):
   else:
     return False
 ```
+## 运行结果展示
+![图片](https://user-images.githubusercontent.com/105708747/180764482-76ab777c-0b5a-4284-b6dc-1178097580d4.png)
