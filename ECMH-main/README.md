@@ -3,8 +3,8 @@ Implement the above ECMH scheme  本次实验为笔者独自完成。引用部�
 ## 代码说明以及注意事项
 除mathfunc导入外，还需要导入gmssl库，在运行前需要先pip install gmssl
 在运行时直接下载py文件运行ECMH即可。
-另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-25：  
-![图片](https://user-images.githubusercontent.com/105708747/180753324-00f0a5b5-de2c-43dd-a8a9-edd2d648689b.png)
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-24：  
+![图片](https://user-images.githubusercontent.com/105708747/180754733-2bd9dbcf-2748-42d7-b563-9f012aaa4fd0.png)
 
 ## ECMH实现介绍
 导入所需库后（mathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,而后设置椭圆曲线相关参数a、b。
@@ -68,7 +68,7 @@ basic_point = (X, Y)
 a = 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFC
 b = 0x28E9FA9E9D9F5E344D5A9E4BCF6509A7F39789F515AB8F92DDBCBD414D940E93
 ```
-再构造ECMH所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余
+再构造ECMH所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余，这里引用https://blog.csdn.net/qq_51999772/article/details/122642868
 ```python
 '''利用扩展欧几里得算法求逆'''
 def cal_inverse(a, b):
