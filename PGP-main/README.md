@@ -115,7 +115,7 @@ basic_point = (X, Y)
 A = 0xFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00000000FFFFFFFFFFFFFFFC
 B = 0x28E9FA9E9D9F5E344D5A9E4BCF6509A7F39789F515AB8F92DDBCBD414D940E93
 ```
-再构造SM2所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余
+再构造SM2所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余，这里引用https://blog.csdn.net/qq_51999772/article/details/122642868
 ```python
 '''利用扩展欧几里得算法求逆'''
 def cal_inverse(a, b):
