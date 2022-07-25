@@ -1,8 +1,8 @@
-﻿#include <stdlib.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
-#include<intrin.h>
 #include<stdint.h>
+#include <stdio.h>
+#include<intrin.h>
 #include<emmintrin.h>
 
 #define FF0(X, Y, Z) ( (X) ^ (Y) ^ (Z) )
@@ -34,14 +34,14 @@ __m128i shift_left(__m128i a, int k)
 	return reg4;
 }
 
-uint32_t FF(uint32_t X, uint32_t Y, uint32_t Z,int i)
+uint32_t FF(uint32_t X, uint32_t Y, uint32_t Z, int i)
 {
-		uint32_t res = 0;
-		if (0 <= i && i < 16)
-			FF0(X, Y, Z);
-		else if (16 <= i && i < 64)
-			FF1(X, Y, Z);
-		return res;
+	uint32_t res = 0;
+	if (0 <= i && i < 16)
+		FF0(X, Y, Z);
+	else if (16 <= i && i < 64)
+		FF1(X, Y, Z);
+	return res;
 }
 
 
@@ -71,12 +71,12 @@ void CF(uint8_t* text)
 	res1[1] = _mm_setr_epi8(text[19], text[18], text[17], text[16], text[23], text[22], text[21], text[20], text[27], text[26], text[25], text[24], text[31], text[30], text[29], text[28]);
 	res1[2] = _mm_setr_epi8(text[35], text[34], text[33], text[32], text[39], text[38], text[37], text[36], text[43], text[42], text[41], text[40], text[47], text[46], text[45], text[44]);
 	res1[3] = _mm_setr_epi8(text[51], text[50], text[49], text[48], text[55], text[54], text[53], text[52], text[59], text[58], text[57], text[56], text[63], text[62], text[61], text[60]);
-	
+
 	int W[68];
 	//计算W[0]--W[15]
 	for (j = 0; j < 16; j++)
 		W[j] = text[j * 4 + 0] << 24 | text[j * 4 + 1] << 16 | text[j * 4 + 2] << 8 | text[j * 4 + 3];
-	
+
 	/*设置各128位reg的值，以便于SIMD优化。设置完毕后，计算W[16]--W[67]*/
 	__m128i res2 = _mm_set_epi32(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
 	for (j = 4; j < 17; j++)
@@ -139,9 +139,9 @@ void CF(uint8_t* text)
 }
 
 void SM3_r(uint8_t* text, uint32_t len) {
-	
+
 	int i;
-	
+
 	/*将text传入output中，并执行压缩函数的迭代过程（注意此处应该除以64，这是因为每次以512bit为一次运算，剩余不能整除部分将会后续处理）*/
 	for (i = 0; i < len / 64; i++) {
 		memcpy(output, text + i * 64, 64);
@@ -154,7 +154,7 @@ void SM3_r(uint8_t* text, uint32_t len) {
 	int rest = len % 64;
 	memset(&output[rest], 0, 64 - rest);
 	memcpy(output, text + i * 64, rest);
-	
+
 	/*由于最后一部分不足512bit，需要对最后一部分进行填充，填充完毕后再进行压缩*/
 	output[rest] = 0x80;
 	if (rest <= 55) {
@@ -182,8 +182,9 @@ int main()
 	{
 		T[i] = 0x7a879d8a;
 	}
-	uint8_t str1[] = "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd";
+	uint8_t str1[] = "bbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzl";
 	SM3_r(str1, 64);
+	printf("SM3Enc result :");
 	for (int i = 0; i < 8; i++)
 		printf("%x ", IV[i]);
 	return 0;
