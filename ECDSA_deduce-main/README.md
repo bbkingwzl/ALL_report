@@ -1,5 +1,5 @@
 # ECDSA_deduce
-本次实验以代码形式具体实现了ECDSA的deduce  
+本次实验以代码形式具体实现了ECDSA的deduce，本次实验为个人独自完成。引用部分在文中有所展示。
 ## 代码说明以及注意事项
 除mathfunc导入外，还需要导入hashlib以及bitcoin库，在运行前需要先pip install hashlib以及pip install bitcoin  
 在运行时直接下载py文件运行ecdsa_deduce即可。  
