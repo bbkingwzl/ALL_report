@@ -11,13 +11,13 @@ import mySM3
 import random
 
 for j in range(0,1000):
-    for i in range(0,2**16):
+    for i in range(0,2**8):
         x = str(random.randint(0,2**512))
         y = str(random.randint(0,2**512))
         x1 = mySM3.SM3(x,0)
         y1 = mySM3.SM3(y,0)
-        x2 = x1[0:8]
-        y2 = y1[0:8]
+        x2 = x1[0:4]
+        y2 = y1[0:4]
         if(x2 == y2):
             print("True")
 print("end")
@@ -25,4 +25,5 @@ print("end")
 ps:1.此处使用的SM3加密函数已提前写好，因此不做介绍
   2.此处代码与文件中有所不同，以readme中所示为准
 ## 打印结果展示
+![图片](https://user-images.githubusercontent.com/105708747/180758961-fd36dd14-017b-48db-bd2c-f0364d8f27a2.png)
 
