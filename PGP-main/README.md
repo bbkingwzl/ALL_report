@@ -1,6 +1,6 @@
 # PGP
 Project: Implement a PGP scheme with SM2，本次实验为笔者独自完成。引用部分在文中有所展示。
-## 代码说明以及注意事项
+## 运行解释以及注意事项
 除mathfunc导入外，还需要导入crypto以及gmssl库，在运行前需要先pip install crypto以及pip install gmssl。若在install crypto后仍报错，则先将python的lib文件夹中的Crypto改为小写crypto之后再pip install crypto
 在运行时直接下载py文件运行main即可。
 另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-24： 
