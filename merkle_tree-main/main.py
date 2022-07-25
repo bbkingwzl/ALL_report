@@ -11,10 +11,10 @@ def sha256(value):
 
 
 def main():
-  test = ['aa', 'bb', 'cc', 'dd', 'ee', 'ff']
+  file_text = ['au', 'th', 'or', 'is', 'bb', 'ki','ng','wz']
   tree = set_merkle_tree(test, sha256)
   root = cap_root(test, sha256)
-  proof = set_proof_2_verify(tree, test[2])
+  proof = set_proof_2_verify(tree, file_text[2])
   print("proof for verify is:",proof)
   result = verify(proof, sha256)
   print("verify results:",result)
