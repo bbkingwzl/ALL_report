@@ -1,5 +1,12 @@
 # ECDSA_deduce
 本次实验以代码形式具体实现了ECDSA的deduce  
+## 代码说明以及注意事项
+除mathfunc导入外，还需要导入hashlib以及bitcoin库，在运行前需要先pip install hashlib以及pip install bitcoin  
+在运行时直接下载py文件运行ecdsa_deduce即可。  
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-23： 
+![图片](https://user-images.githubusercontent.com/105708747/180752073-83a1fb83-3d20-4017-bc17-568bb257e183.png)
+
+## 具体函数介绍
 导入所需库后（mathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,并利用mathfunc中的生成密钥函数进行密钥的生成工作。
 ```python
 import mathfunc
@@ -54,9 +61,10 @@ def ecdsa_dedeuce(sign, mes):
     return key1_possible,key2_possible
 key1_possible, key2_possible=ecdsa_dedeuce(sign, mes)
 ```
+## 打印结果
 对最终结果进行打印，最终结果如下：
 ![图片](https://user-images.githubusercontent.com/105708747/180432771-6395418e-220a-400b-8534-12756a566e50.png)
-
+## mathfunc函数介绍
 下面介绍mathfunc.py中的函数。首先设置有限域的阶以及椭圆曲线的阶以及基本点，以及椭圆曲线方程的参数a=0，b=7，则函数方程为y^2=x^3+7
 ```python
 import secrets
@@ -71,7 +79,7 @@ basic_point = (X, Y)
 A = 0
 B = 7
 ```
-再构造ECDSA所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余
+再构造ECDSA所需使用的数学函数，分别是利用扩展欧几里得算法求逆以及Tonelli-Shanks求解二次剩余，这里引用https://blog.csdn.net/qq_51999772/article/details/122642868
 ```python
 '''利用扩展欧几里得算法求逆'''
 def cal_inverse(a, b):
