@@ -1,5 +1,7 @@
 # sm2_2P_sign
-implement sm2 2P sign with real network communication,具体实验报告见readme
+implement sm2 2P sign with real network communication,本次实验为笔者独自完成。引用部分在文中有所展示。
+## 运行解释以及注意事项
+除mymathfunc导入外，还需要导入gmssl库，在运行前需要先pip install gmssl 在运行时直接下载py文件运行sm2_2P_sign即可。
 ## sm2 2P sign实现
 ### 准备阶段
 导入所需库后（mymathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,而后设置椭圆曲线相关参数a、b。并利用mathfunc中的密钥生成函数生成公私钥对。
