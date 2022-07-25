@@ -1,5 +1,11 @@
 # PGP
-Project: Implement a PGP scheme with SM2，具体实验报告见readme
+Project: Implement a PGP scheme with SM2，本次实验为笔者独自完成。引用部分在文中有所展示。
+## 代码说明以及注意事项
+除mathfunc导入外，还需要导入crypto以及gmssl库，在运行前需要先pip install crypto以及pip install gmssl。若在install crypto后仍报错，则先将python的lib文件夹中的Crypto改为小写crypto之后再pip install crypto
+在运行时直接下载py文件运行main即可。
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-24： 
+![图片](https://user-images.githubusercontent.com/105708747/180754167-811c42ef-2854-4f2e-98d4-f094419cc734.png)
+
 ## PGP实现过程
 导入所需库后（mathfunc为笔者所编写的py文件），设置有限域的阶以及椭圆曲线的阶以及基本点,再设置椭圆曲线参数，并利用mathfunc中的生成密钥函数进行密钥的生成工作。此时生成的公私钥对为SM2加解密所需使用的sk、pk，即在PKEnc和PKDec中所需使用的密钥。
 ```python
@@ -91,6 +97,7 @@ if __name__ == '__main__':
     M1, K1 = Encrypt(M, K)
     Decrypt(M1, K1)
 ```
+## 打印结果展示
 打印结果如下：  
 ![图片](https://user-images.githubusercontent.com/105708747/180672266-b273d5fc-06c3-48d4-9c0f-622a24d0579a.png)
 ## mathfunc中的函数介绍
