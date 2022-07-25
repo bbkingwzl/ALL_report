@@ -1,4 +1,10 @@
 # SM3_optimization
+本次实验以代码形式具体实现了以SIMD指令集的方式进行SM3的优化，本次实验为笔者独自完成。引用部分在文中有所展示。
+## 运行解释以及注意事项
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-22： 
+![图片](https://user-images.githubusercontent.com/105708747/180760441-2a23118a-300a-4f4b-8664-f00fb9f1a731.png)
+
+## 具体代码解释
 此处使用SIMD指令集对SM3进行优化
 首先根据官方文档定义一系列操作FF0、FF1、GG0、GG1、P0和P1等，此处不是优化的重点，因此不做赘述。代码实现如下：
 ```c
@@ -195,10 +201,12 @@ int main()
 	{
 		T[i] = 0x7a879d8a;
 	}
-	uint8_t str1[] = "abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd";
+	uint8_t str1[] = "bbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzl";
 	SM3_r(str1, 64);
 	for (int i = 0; i < 8; i++)
 		printf("%x ", IV[i]);
 	return 0;
 }
 ```
+## 输出结果展示
+![图片](https://user-images.githubusercontent.com/105708747/180760937-0756a8f0-b170-4555-ad31-ecc49ace7bec.png)
