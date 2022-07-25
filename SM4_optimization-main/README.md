@@ -1,5 +1,9 @@
 # SM4_optimization
-此处直接使用课内实验所写代码，分为查表优化、SIMD指令集加速以及多线程优化
+此处直接使用课内实验所写代码，分为查表优化、SIMD指令集加速以及多线程优化。这里代码为课内小组实验内容，此处直接使用。
+## 运行解释以及注意事项
+运行代码时直接下载c文件运行即可。
+另外是本次代码上传时间为多天前，但由于需要重新上传至总库因此时间改变，具体实现时间为2022-7-19： 
+![图片](https://user-images.githubusercontent.com/105708747/180763614-df5873cc-9c08-414f-9c59-ad8bd7e14e73.png)
 ## 查表优化
 查表方法的核心思想是将密码算法轮函数中尽可能多的变换操作制成表。SM4加/解密轮函数中的T变换由非线性变换τ和线性变换L构成。将非线性变换τ的输入记为X=(x0,x1,x2,x3)$\in$(Z28)4，输出记为Y=(y0,y1,y2,y3)$\in$(Z28)4。可将非线性变换$\tau$的操作定义如下。  
 $\[{y_i} = Sbox({x_i}),0 \le i < 4\]$  
@@ -125,3 +129,10 @@ void *threading(void *pbuf) {
 	return NULL;
 }
 ```
+## 结果展示
+时间开销对比：  
+![图片](https://user-images.githubusercontent.com/105708747/180763245-5c4e2440-2cff-430e-856a-c236468ea502.png)
+![图片](https://user-images.githubusercontent.com/105708747/180763300-c46bfeb5-43c9-4f73-9e1e-4844c4ae29ac.png)  
+利用 linux 下的 gprof 工具，生成 gmon.out 文件，可以分析程序运行过程各个函数调用的次数和时间。  
+![图片](https://user-images.githubusercontent.com/105708747/180763378-86c06826-95a9-4c49-8557-cdfb265bc2c1.png)
+
