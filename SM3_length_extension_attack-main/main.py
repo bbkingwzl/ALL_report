@@ -65,8 +65,9 @@ def hash_val(msg):
 
 hash2 = hash_val(M3_byte)
 
-print(hash2)
+print("经过长度扩展后得到的哈希结果：",hash2)
 """验证，若直接加密M1||M2||M3得到结果与上述不同，这是因为其中间存在padding，实际上应为M1||M2||padding||M3"""
 M4 = M1+M2+M3
 hash4 = mySM3.SM3(M4,1)
-print(hash4)
+print("验证直接对M1||M2||M3进行哈希得到的结果：",hash4)
+print("两哈希值是否相等：",hash2 == hash4)
