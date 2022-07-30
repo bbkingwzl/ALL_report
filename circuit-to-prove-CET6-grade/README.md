@@ -182,6 +182,7 @@ To verify the proof，执行如下命令：
 snarkjs groth16 verify verification_key.json public.json proof.json
 ```
 The command uses the files verification_key.json we exported earlier,proof.json and public.json to check if the proof is valid. If the proof is valid, the command outputs an OK.  
+## 运行结果展示
 最终证明输出结果截图如下：  
 ![图片](https://user-images.githubusercontent.com/105708747/181919958-0b476114-3f41-4224-b04c-54868fba9c53.png)
 ## 参考内容
