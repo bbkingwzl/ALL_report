@@ -65,44 +65,64 @@ Extra project:
 ```
 # 项目简介及链接
 ## 1.SM3_Birthday_Attack
+本实验实现SM3生日攻击，由于算力有限，仅截取hash值的前32位作为结果。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM3_Birthday_Attack-main
 ## 2.SM3_rho_method
+本实验实现SM3rho method attack，由于算力有限，仅截取hash值的前32位作为结果。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM3_rho_method-main
 ## 3.SM3_length_extension_attack
+本实验依照PPT流程实现SM3的长度扩展攻击。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM3_length_extension_attack-main
 ## 4.SM3_optimization
+本实验利用SIMD指令集对SM3进行优化，其中包含运行时间测试。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM3_optimization-main
 ## 5.merkle_tree
+本实验实现了简单的Merkle tree以及其存在性证明。  
 https://github.com/bbkingwzl/ALL_report/tree/main/merkle_tree-main
 ## 6.ECDSA_deduce
+本实验不局限于以report的形式学习ECDSA，并以代码的形式具体实现了ECDSA_deduce  
 https://github.com/bbkingwzl/ALL_report/tree/main/ECDSA_deduce-main
 ## 7.sm2_rfc6979
+本实验按照rfc6979产生随机数k并实现了sm2算法。  
 https://github.com/bbkingwzl/ALL_report/tree/main/sm2_rfc6979-main
 ## 8.pitfalls_verify
+本实验验证了PPT所提及的六种情况所能发生的私钥泄露问题。  
 https://github.com/bbkingwzl/ALL_report/tree/main/pitfalls_verify
 ## 9.ECMH
+本实验实现了将集合哈希到椭圆曲线点的ECMH方案。  
 https://github.com/bbkingwzl/ALL_report/tree/main/ECMH-main
 ## 10.PGP
+本实验依照PPT流程实现了PGP方案。  
 https://github.com/bbkingwzl/ALL_report/tree/main/PGP-main
 ## 11.sm2_2p_sign
+本实验依照PPT流程实现了两方签名方案。  
 https://github.com/bbkingwzl/ALL_report/tree/main/sm2_2P_sign-main
 ## 12.PoC_password_check
+本实验依照PPT流程实现了PoC password check方案。  
 https://github.com/bbkingwzl/ALL_report/tree/main/PoC_password_check_up-main
 ## 13.SM2_2p_decrypt
+本实验依照PPT流程实现了两方解密方案。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM2_2p_decrypt-main
 ## 14.parse_the_tx_data
+本实验由于测试币并没有申请成功，因此选取了一笔交易以进行分析。  
 https://github.com/bbkingwzl/ALL_report/tree/main/parse_the_tx_data
 ## 15.forge a signature to pretent that you are Satoshi
+本实验依据前述的pitfalls_verify进行了伪造。  
 https://github.com/bbkingwzl/ALL_report/tree/main/forge%20a%20signature%20to%20pretend%20that%20you%20are%20Satoshi
 ## 16.report_on_MPT
+本实验对于以太坊MPT（Merkle Patricia Tree）进行了学习，以读书笔记的形式进行呈现。  
 https://github.com/bbkingwzl/ALL_report/tree/main/report_on_MPT
 ## 17.find-key
+本实验实现了在固定哈希值以及message的情况下寻找key。  
 https://github.com/bbkingwzl/ALL_report/tree/main/find-key-main
 ## 18.circuit-to-prove-CET6-grade
+本实验在参照基于circom、snarkjs实现零知识证明不透漏具体地理位置的区域监控的示例的基础上，实现了CET6分数大于425的证明.  
 https://github.com/bbkingwzl/ALL_report/tree/main/circuit-to-prove-CET6-grade
 ## 19.SM4
+本实验实现了SM4的ECB以及CBC方案并对比了效率。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM4
 ## 20.SM4_optimization
+本实验为课内实验内容，实现了SM4的查表优化、SIMD指令集加速以及多线程优化。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM4_optimization-main
 # 其他事宜
 代码说明、运行说明以及运行截图等都在各个project中的readme中有所体现，详见其中内容。
