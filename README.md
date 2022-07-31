@@ -125,4 +125,4 @@ https://github.com/bbkingwzl/ALL_report/tree/main/SM4
 本实验为课内实验内容，实现了SM4的查表优化、SIMD指令集加速以及多线程优化。  
 https://github.com/bbkingwzl/ALL_report/tree/main/SM4_optimization-main
 # 其他事宜
-代码说明、运行说明以及运行截图等都在各个project中的readme中有所体现，详见其中内容。
+代码说明、运行说明以及运行截图、参考内容等都在各个project中的readme中有所体现，详见其中内容。
