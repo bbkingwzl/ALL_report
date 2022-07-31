@@ -211,3 +211,16 @@ int main()
 ```
 ## 输出结果展示
 ![图片](https://user-images.githubusercontent.com/105708747/180760937-0756a8f0-b170-4555-ad31-ecc49ace7bec.png)
+补充一个时间测试，这里测试加密一个512bit的信息运行一万次SM3得出时间为68ms，代码以及打印结果如下：
+```c
+	uint8_t str1[] = "bbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzl";
+	int start = clock();
+	for (int i = 0; i < 10000; i++) {
+		SM3_r(str1, 64);
+	}
+	int end = clock();
+	printf("time:%d ms",(end - start));
+```
+![图片](https://user-images.githubusercontent.com/105708747/182008360-5e824df5-e338-493b-8e8e-b28223a30604.png)  
+## Conclusion
+本次实验利用SIMD指令集实现SM3优化，其效果能够达到每512bit分组6.8微秒。
