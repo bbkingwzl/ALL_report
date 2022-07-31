@@ -104,3 +104,5 @@ https://github.com/bbkingwzl/ALL_report/tree/main/circuit-to-prove-CET6-grade
 https://github.com/bbkingwzl/ALL_report/tree/main/SM4
 ## 20.SM4_optimization
 https://github.com/bbkingwzl/ALL_report/tree/main/SM4_optimization-main
+# 其他事宜
+代码说明、运行说明以及运行截图等都在各个project中的readme中有所体现，详见其中内容。
