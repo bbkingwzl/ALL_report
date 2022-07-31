@@ -210,7 +210,7 @@ int main()
 }
 ```
 ## 输出结果展示
-![图片](https://user-images.githubusercontent.com/105708747/180760937-0756a8f0-b170-4555-ad31-ecc49ace7bec.png)
+![图片](https://user-images.githubusercontent.com/105708747/180760937-0756a8f0-b170-4555-ad31-ecc49ace7bec.png)  
 补充一个时间测试，这里测试加密一个512bit的信息运行一万次SM3得出时间为68ms，代码以及打印结果如下：
 ```c
 	uint8_t str1[] = "bbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzlbbkingwzl";
